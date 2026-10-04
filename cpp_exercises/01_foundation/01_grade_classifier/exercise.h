@@ -24,13 +24,18 @@ inline bool isEven(int score) {
     // TODO (Warmup): Use the modulo operator (%)
     // If score % 2 == 0, it is even.
     (void)score;
-    return false;
-}
+    return (score % 2 == 0);
+}   
 
 // Task 1.2: Return the larger of two scores
 inline int getMaxScore(int scoreA, int scoreB) {
     // TODO (Warmup): Compare scoreA and scoreB using if / else
     (void)scoreA; (void)scoreB;
+    if (scoreA > scoreB) {
+        return scoreA;
+    } else {
+        return scoreB;
+    }
     return 0;
 }
 
@@ -80,7 +85,25 @@ inline double getGradePoints(char letterGrade) {
     // TODO (Intermediate): Support both uppercase and lowercase letters.
     // If letter is invalid (e.g. 'Z', 'X', '?'), throw invalid_argument.
     (void)letterGrade;
-    return 0.0;
+    switch (letterGrade) {
+        case 'A':
+        case 'a':
+            return 4.0;
+        case 'B':
+        case 'b':
+            return 3.0;
+        case 'C':
+        case 'c':
+            return 2.0;
+        case 'D':
+        case 'd':
+            return 1.0;
+        case 'F':
+        case 'f':
+            return 0.0;
+        default:
+            throw invalid_argument("Invalid letter grade");
+    }
 }
 
 // ----------------------------------------------------------------------------
@@ -100,5 +123,20 @@ inline double getGradePoints(char letterGrade) {
 inline string evaluateScholarship(int score, double attendancePercent, bool hasDisciplinaryWarning) {
     // TODO (Deep Thinking): Follow the 4 rules in order!
     (void)score; (void)attendancePercent; (void)hasDisciplinaryWarning;
-    return "Standard";
+    if (score < 0 || score > 100 || attendancePercent < 0.0 || attendancePercent > 100.0) {
+        throw invalid_argument("Input out of range");
+    }
+    if (hasDisciplinaryWarning) {
+        return "No Scholarship";
+    }
+    if (score >= 90 && attendancePercent >= 90.0) {
+        return "Full Scholarship";
+    }
+    if (score >= 80 && attendancePercent >= 80.0) {
+        return "Half Scholarship";
+    }           
+    if (score < 60 || attendancePercent < 70.0) {
+        return "Academic Probation";
+    }
+    return "Standard";  
 }
