@@ -1,0 +1,27 @@
+# Compiled executables, objects, and debug files
+*.exe
+*.out
+*.o
+*.obj
+*.pdb
+*.ilk
+
+# IDE and Editor settings
+.vscode/
+.vs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Course presentation slides, documents, and web hub assets outside exercise folders
+*.pdf
+*.pptx
+*.docx
+*.html
+game/
+
+# OS-specific files
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
